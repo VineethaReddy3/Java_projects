@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Currency_Converter{        
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the currency code");
+        System.out.println("1. Rupees\n2. Dollar\n3. Pound\n4.Euro");
+        int x = sc.nextInt();
+        
+        switch (x){
+            case 1:
+            System.out.println("Enter amount in rupees");
+            double rupees = sc.nextDouble();
+            System.out.println("Dollar :" +(0.012*rupees)+ "\nPound :" + (rupees*0.0092)+ "\nEuro :"+ (rupees*0.011 ));
+            break;
+
+            case 2:
+            System.out.println("Enter amount in Dollar");
+            double dollar = sc.nextDouble();
+            System.out.println("Rupees :"+(dollar*83.73)+"\nPound :"+ (dollar*0.77) +"\nEuro :"+(dollar*0.92) );
+            break;
+
+            case 3:
+            System.out.println("Enter amount in Pound");
+            double pound = sc.nextDouble();
+            System.out.println("Rupees :" + (pound*108.16) +"\nDollar :"+(pound*1.29)+"\nEuro :"+(pound*1.19));
+            break;
+
+            case 4:
+            System.out.println("Enter amount in Euro");
+            double euro = sc.nextDouble();
+            System.out.println("Rupees :"+(euro*91.16) + "\nDollar :"+(euro*1.09)+"\nPound :"+(euro*0.84));
+            break;
+
+            default:
+            System.out.println("Enter valid number");
+        }
+        sc.close();
+    }
+}
