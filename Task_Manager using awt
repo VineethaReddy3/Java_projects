@@ -1,0 +1,69 @@
+//code for Task manager using awt
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class TaskManager extends Frame implements ActionListener{
+     private TextField tf;
+     private List l;
+     private ArrayList<String> tasks;
+     TaskManager(){
+        tasks = new ArrayList<>();
+        setTitle("--Task Manager--");
+        setSize(600,500);
+        setLayout(new BorderLayout());
+        
+        //top
+        Panel top = new Panel(new FlowLayout());
+        tf = new TextField(30);
+        top.add(tf);
+        Button b1 = new Button("Add Task");
+        top.add(b1);
+        b1.addActionListener(this);
+        add(top,BorderLayout.NORTH);
+        setBackground(Color.GRAY);
+
+        //center
+        l=new List();
+        add(l,BorderLayout.CENTER);
+
+        //bottom
+        Button delete = new Button("Delete Task");
+        add(delete,BorderLayout.SOUTH);
+        delete.addActionListener(this);
+
+        //window listener for closing window
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e){
+                dispose();
+            }
+        }); 
+     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String action = e.getActionCommand();
+        if(action.equals("Add Task")){
+            String task = tf.getText();
+            if(!task.isEmpty()){
+                tasks.add(task);
+                l.add(task);
+                tf.setText("");
+            }
+        }
+        else if(action.equals("Delete Task")){
+                int index = l.getSelectedIndex();
+                if(index>=0){
+                    tasks.remove(index);
+                    l.remove(index);
+                }
+            }
+        }
+    
+    public static void main(String[] args){
+       TaskManager t = new TaskManager();
+       t.setVisible(true);
+       t.setBackground(Color.orange);
+    }
+    
+}
